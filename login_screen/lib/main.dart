@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'screens/login.dart'; // Import the new login screen file
+import 'screens/login.dart';
+import 'screens/signup.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,15 +12,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Login Screen',
+      title: 'Login/Sign Up UI',
       theme: ThemeData(
-        primarySwatch: Colors.purple,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
         fontFamily: 'Inter',
+        primarySwatch: Colors.purple,
       ),
-      // Set the home to our imported LoginScreen widget
-      home: const LoginScreen(),
-      debugShowCheckedModeBanner: false,
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const LoginScreen(),
+        '/signup': (context) => const SignUpScreen(),
+      },
     );
   }
 }
+

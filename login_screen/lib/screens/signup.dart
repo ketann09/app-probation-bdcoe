@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'dart:math' as math; 
+import 'dart:math' as math; // Import the math library for pi
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     
@@ -44,13 +43,13 @@ class _LoginScreenState extends State<LoginScreen> {
           SafeArea(
             child: SingleChildScrollView(
               child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24.0, vertical: 48.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(height: 48),
                     const Text(
-                      'Login',
+                      'Create account',
                       style: TextStyle(
                         fontSize: 32,
                         fontWeight: FontWeight.bold,
@@ -61,20 +60,18 @@ class _LoginScreenState extends State<LoginScreen> {
                     Row(
                       children: [
                         const Text(
-                          "Don't have an account? ",
+                          "Already have an account? ",
                           style: TextStyle(
                             color: Colors.grey,
                             fontSize: 16,
                           ),
                         ),
-                        
                         GestureDetector(
                           onTap: () {
-                            
-                            Navigator.pushNamed(context, '/signup');
+                            Navigator.pop(context);
                           },
                           child: const Text(
-                            'sign up',
+                            'sign in',
                             style: TextStyle(
                               color: Colors.purple,
                               fontSize: 16,
@@ -87,13 +84,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     const SizedBox(height: 48),
                     const TextField(
                       decoration: InputDecoration(
-                        prefix: Text(
-                          '+1 ',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 16,
-                          ),
-                        ),
+                        hintText: "Name",
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
                         ),
@@ -106,32 +97,39 @@ class _LoginScreenState extends State<LoginScreen> {
                           borderSide: BorderSide(color: Colors.purple, width: 1.5),
                         ),
                       ),
-                      keyboardType: TextInputType.phone,
+                      keyboardType: TextInputType.text,
                     ),
                     const SizedBox(height: 16),
-                    TextField(
-                      obscureText: true,
+                    const TextField(
                       decoration: InputDecoration(
-                        hintText: 'Password',
-                        prefixIcon: const Icon(Icons.lock),
-                        suffixIcon: TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'FORGOT',
-                            style: TextStyle(
-                              color: Colors.purple,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                        ),
-                        border: const OutlineInputBorder(
+                        hintText: "Email or Phone",
+                        border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
                         ),
-                        enabledBorder: const OutlineInputBorder(
+                        enabledBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
                           borderSide: BorderSide(color: Colors.grey, width: 1.0),
                         ),
-                        focusedBorder: const OutlineInputBorder(
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                          borderSide: BorderSide(color: Colors.purple, width: 1.5),
+                        ),
+                      ),
+                      keyboardType: TextInputType.text,
+                    ),
+                    const SizedBox(height: 16),
+                    const TextField(
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        hintText: 'Password',
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(12.0)),
+                          borderSide: BorderSide(color: Colors.grey, width: 1.0),
+                        ),
+                        focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(12.0)),
                           borderSide: BorderSide(color: Colors.purple, width: 1.5),
                         ),
@@ -154,7 +152,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              'Login',
+                              'Sign up',
                               style: TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -170,53 +168,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 40),
-                    const Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        SocialIcon(iconPath: 'assets/icons/apple_logo.svg'),
-                        SizedBox(width: 20),
-                        SocialIcon(iconPath: 'assets/icons/facebook_logo.svg'),
-                        SizedBox(width: 20),
-                        SocialIcon(iconPath: 'assets/icons/google_logo.svg'),
-                        SizedBox(width: 20),
-                        SocialIcon(iconPath: 'assets/icons/x_logo.svg'),
-                      ],
-                    ),
                   ],
                 ),
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-
-class SocialIcon extends StatelessWidget {
-  final String iconPath;
-  const SocialIcon({
-    super.key,
-    required this.iconPath,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        border: Border.all(
-          color: Colors.grey.shade300,
-          width: 1.5,
-        ),
-      ),
-      child: SvgPicture.asset(
-        iconPath,
-        height: 24,
-        width: 24,
       ),
     );
   }
