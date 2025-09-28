@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'login_screen.dart'; // Import the new login screen file
+import 'screens/login.dart'; // Import the new login screen file
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +19,7 @@ class MyApp extends StatelessWidget {
       ),
       // Set the home to our imported LoginScreen widget
       home: const LoginScreen(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
