@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Login/Sign Up UI',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: 'Inter',
         primarySwatch: Colors.purple,
