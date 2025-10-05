@@ -159,11 +159,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
-  googleSignIn() {
-    GoogleAuthProvider.credential(
-      accessToken: 
-    );
-    FirebaseAuth.instance.signInWithCredential(credential);
-  }
 }
